@@ -128,7 +128,7 @@ if __name__ == '__main__':
             best_acc = acc
             best_epoch = e
             best_model_path = model_path
-            print(f"🏆 新的最佳模型！Epoch {e+1}, 验证准确率: {acc:.4f}")
+            print(f"新的最佳模型！Epoch {e+1}, 验证准确率: {acc:.4f}")
         
         # 记录epoch数据用于可视化
         visualizer.log_epoch(e, acc)
@@ -143,17 +143,17 @@ if __name__ == '__main__':
     
     # 训练完成后的总结
     print("\n" + "="*60)
-    print("🎯 训练完成！最佳模型信息：")
-    print(f"📊 最佳Epoch: {best_epoch + 1}")
-    print(f"🎯 最佳验证准确率: {best_acc:.4f}")
-    print(f"📁 最佳模型文件: {best_model_path}")
+    print("训练完成！最佳模型信息：")
+    print(f"最佳Epoch: {best_epoch + 1}")
+    print(f"最佳验证准确率: {best_acc:.4f}")
+    print(f"最佳模型文件: {best_model_path}")
     print("="*60)
     
     # 复制最佳模型到根目录，方便部署使用
     best_model_for_botzone = 'best_model.pkl'
     shutil.copy2(best_model_path, best_model_for_botzone)
-    print(f"✅ 最佳模型已复制到: {best_model_for_botzone}")
-    print(f"🚀 请使用 {best_model_for_botzone} 进行Botzone对决！")
+    print(f"最佳模型已复制到: {best_model_for_botzone}")
+    print(f"请使用 {best_model_for_botzone} 进行Botzone对决！")
     
     # 生成最终的训练报告和可视化
     print("\n正在生成最终可视化报告...")
@@ -163,4 +163,5 @@ if __name__ == '__main__':
     visualizer.save_training_log()
     
     print(f"所有可视化图表已保存到 {logdir}visualizations/ 目录")
-    print("🎉 训练完成！现在你将获得干净简洁的可视化图像！")
+
+    print("训练完成！现在你将获得干净简洁的可视化图像！")
