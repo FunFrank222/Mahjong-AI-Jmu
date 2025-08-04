@@ -24,39 +24,104 @@
 
 ### 环境要求
 
+安装必要的第三方库（包括但不限于）：
+
 ```bash
 pip install torch torchvision numpy matplotlib json
 ```
+## 数据集准备
 
-### 数据准备
+### 步骤1：下载数据集
 
-1. 准备麻将对局数据（JSON格式）
-2. 运行数据预处理：
+从北大网盘下载数据集：
+
+**下载链接**: https://disk.pku.edu.cn/anyshare/zh-cn/link/AA8CB7A57AFDCD48CAA7C749E04B5B6FAA?_tb=none&expires_at=2026-04-30T23%3A59%3A48%2B08%3A00&item_type=&password_required=false&title=data.zip&type=anonymous
+
+### 步骤2：解压数据集
 
 ```bash
+# 将下载的data.zip解压到项目根目录
+unzip data.zip
+# 确保解压后有data.txt文件
+```
+
+### 步骤3：数据预处理
+
+```bash
+# 运行数据预处理脚本
 python preprocess.py
 ```
 
-### 模型训练
+**预处理过程说明**：
+- 读取原始游戏日志（data.txt）
+- 提取游戏状态特征
+- 转换为神经网络可用格式
+- 生成训练用的.npz文件
+
+## 模型训练详解
+
+### 步骤1：理解模型架构
+
+CNN模型包含：
+- **输入层**: 38通道 × 4×9 特征图
+- **特征提取**: 20个残差块
+- **输出层**: 235维动作概率
+
+### 步骤2：开始训练
 
 ```bash
+# 启动监督学习训练
 python supervised.py
 ```
 
-训练过程中会自动：
-- 保存最佳模型检查点
+**训练过程监控**：
+- 实时显示损失值和准确率
+- 自动保存最佳模型
 - 生成训练可视化图表
-- 记录详细训练日志
 
-### 训练分析
+### 步骤3：训练参数说明
+
+```python
+# 关键训练参数
+learning_rate = 0.001    # 学习率
+batch_size = 32          # 批次大小
+epochs = 100             # 训练轮数
+```
+
+## 训练监控与分析
+
+### 实时监控
+
+训练过程中您将看到：
+
+### 可视化分析
 
 ```bash
+# 分析训练结果
 python analyze_training.py
 ```
 
-### Botzone部署
+生成的可视化文件：
+- `log/visualizations/training_curves.png` - 训练曲线
+- `log/visualizations/loss_detail.png` - 损失详情
+- `log/visualizations/training_dashboard.png` - 综合仪表板
+- <img width="1593" height="1105" alt="image" src="https://github.com/user-attachments/assets/a461b0c3-dbcd-42c4-a157-d9011db8e655" />
 
-将训练好的模型和代码打包上传到Botzone平台，主程序会自动处理游戏请求。
+
+## 模型部署
+
+### Botzone平台部署
+
+1. **准备部署文件**：
+   ```bash
+   # 打包必要文件
+   zip -r submission.zip __main__.py agent.py model.py feature.py log/checkpoint/best_model.pkl
+   ```
+
+2. **上传到Botzone**：
+   - 登录Botzone平台
+   - 选择麻将比赛
+   - 上传__main__.zip
 
 ## 模型架构详解
 
@@ -99,50 +164,6 @@ python analyze_training.py
 
 可视化文件保存在 `log/visualizations/` 目录下。
 
-## 使用示例
-
-### 基本使用
-
-```python
-from model import CNNModel
-from feature import FeatureAgent
-
-# 初始化模型和智能体
-model = CNNModel()
-agent = FeatureAgent(model)
-
-# 处理游戏请求
-response = agent.action2response(action_id, request)
-```
-
-### 训练自定义模型
-
-```python
-from supervised import train_model
-from dataset import MahjongGBDataset
-
-# 加载数据集
-dataset = MahjongGBDataset('data.npz')
-
-# 开始训练
-train_model(dataset, epochs=100)
-```
-
-## 配置说明
-
-### 关键参数
-
-- `OBS_SIZE = 38`: 观察空间维度
-- `ACT_SIZE = 235`: 动作空间维度
-- `RESIDUAL_BLOCKS = 20`: 残差块数量
-- `CHANNELS = 256`: 卷积通道数
-
-### 训练参数
-
-- 学习率: 0.001 (Adam优化器)
-- 批次大小: 可配置
-- 训练轮数: 可配置
-- 数据增强: 支持旋转变换
 
 ## 重要文件说明
 
