@@ -120,6 +120,7 @@ python analyze_training.py
 
 <img width="1477" height="852" alt="image" src="https://github.com/user-attachments/assets/337124ad-985c-4de2-a4ae-d2907593343d" />
 
+<img width="1794" height="784" alt="image" src="https://github.com/user-attachments/assets/4eb9a1e5-d95f-4f3a-a5c1-595f36614f0c" />
 
 ## 模型架构详解
 
@@ -186,4 +187,3 @@ python analyze_training.py
 <img width="1725" height="1126" alt="image" src="https://github.com/user-attachments/assets/9dc14173-2343-4121-8b2d-e37452aa6e08" />
 
 <img width="1727" height="1112" alt="image" src="https://github.com/user-attachments/assets/291d524e-e4d3-40c6-adc0-b7c16b6d71c7" />
-
