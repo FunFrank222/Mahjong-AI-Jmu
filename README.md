@@ -103,7 +103,9 @@ python analyze_training.py
 
 生成的可视化文件：
 - `log/visualizations/training_curves.png` - 训练曲线
+- <img width="1592" height="519" alt="image" src="https://github.com/user-attachments/assets/d9ff16ce-4d79-4453-b34b-e4880590b4d4" />
 - `log/visualizations/loss_detail.png` - 损失详情
+- <img width="1595" height="871" alt="image" src="https://github.com/user-attachments/assets/6ce6c951-da20-493a-bdfd-c497950ba3d4" />
 - `log/visualizations/training_dashboard.png` - 综合仪表板
 - <img width="1593" height="1105" alt="image" src="https://github.com/user-attachments/assets/a461b0c3-dbcd-42c4-a157-d9011db8e655" />
 
@@ -112,16 +114,12 @@ python analyze_training.py
 
 ### Botzone平台部署
 
-1. **准备部署文件**：
-   ```bash
-   # 打包必要文件
-   zip -r submission.zip __main__.py agent.py model.py feature.py log/checkpoint/best_model.pkl
-   ```
+<img width="1738" height="701" alt="image" src="https://github.com/user-attachments/assets/6e865b15-8f37-487e-a6ec-80e1dbee00c2" />
 
-2. **上传到Botzone**：
-   - 登录Botzone平台
-   - 选择麻将比赛
-   - 上传__main__.zip
+<img width="1813" height="673" alt="image" src="https://github.com/user-attachments/assets/e7fd0016-bbb7-4ead-9f15-0b6277d1bcc9" />
+
+<img width="1477" height="852" alt="image" src="https://github.com/user-attachments/assets/337124ad-985c-4de2-a4ae-d2907593343d" />
+
 
 ## 模型架构详解
 
@@ -183,3 +181,9 @@ python analyze_training.py
 - **模型大小**: 约20M参数
 - **训练速度**: 取决于硬件配置
 - **准确率**: 在验证集上达到较高准确率
+- **Botzone平台天梯排行榜表现**:
+  
+<img width="1725" height="1126" alt="image" src="https://github.com/user-attachments/assets/9dc14173-2343-4121-8b2d-e37452aa6e08" />
+
+<img width="1727" height="1112" alt="image" src="https://github.com/user-attachments/assets/291d524e-e4d3-40c6-adc0-b7c16b6d71c7" />
+
